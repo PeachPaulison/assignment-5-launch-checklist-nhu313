@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
 	let form = document.querySelector('form');
 
 	//    get the form
-	//    add a listener to when the form submits
+	//    add a listener to when the form submits 
 	form.addEventListener('click', function(event) {
 		event.preventDefault();
 		let pilot = document.querySelector('input[name=pilotName]');
@@ -46,4 +46,4 @@ window.addEventListener('load', function() {
 		let list = document.getElementById('faultyItems');
 		formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue);
 	});
-});
+});   //Ask Tyler about the localhost error.  Firewall issue?
