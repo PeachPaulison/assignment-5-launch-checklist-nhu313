@@ -3,22 +3,26 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 	// get the missionTarget div
+
+
 	// set the inner HTML to this
-	// fill in the information that is passed in
-	// Here is the HTML formatting for our mission target div.
-	/*
-    `
+  let missionTarget  = document.getElementById("missionTarget");
+
+	missionTarget.innerHTML =
+		// fill in the information that is passed in
+		// Here is the HTML formatting for our mission target div.
+
+		`
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${name}</li>
-                    <li>Diameter: </li>
+                    <li>Diameter: ${diameter} </li>
                     <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Distance from Earth: ${distance}</li>
+                    <li>Number of Moons: ${moons} </li>
                 </ol>
-                <img src="">
-                `
-   */
+                <img src="${imageUrl}">
+                `;
 }
 
 function validateInput(testInput) {
@@ -30,7 +34,7 @@ function validateInput(testInput) {
 	// return 'Is a Number'
 	if (testInput === 'Empty') {
 		return 'Empty';
-	} else if (NaN(Number(testInput))) {
+	} else if (isNaN(Number(testInput))) {
 		return 'Not a Number';
 	} else {
 		return 'Is a Number';
@@ -59,8 +63,8 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
 	// get the pilot status, update the inner HTML to say ` ${pilotValue} is ready for launch`
 	// get the copilot status, update the inner HTML to say `CoPilot ${copilotValue} is ready for launch`
 	list.style.visibility = 'visible';
-	document.getElementByID('pilotStatus').innerHTML = `Pilot ${pilot} is ready for launch!`;
-	document.getElementByID('copilotStatus').innerHTML = `Copilot ${copilot} is ready for launch!`;
+	document.getElementByID('pilotStatus').innerHTML = `Pilot ${pilot.value} is ready for launch!`;
+	document.getElementByID('copilotStatus').innerHTML = `Copilot ${copilot.value} is ready for launch!`;
 
 	// check if the fuel level is less 10,000
 	// change launchStatus to "Shuttle not ready for launch", and color to red
@@ -92,10 +96,10 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
 async function myFetch() {
 	let planetsReturned;
 
-	planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json')
-  .then(function(response)
-	 {
-     return response.json();
+	planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then(function(
+		response
+	) {
+		return response.json();
 		// get the json from the response
 	});
 
@@ -105,8 +109,8 @@ async function myFetch() {
 function pickPlanet(planets) {
 	// randomly pick a planet from the array
 	// Math random for index
-let index = Math.floor(Math.random()*planets.length)
-return planets[index]
+	let index = Math.floor(Math.random() * planets.length);
+	return planets[index];
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
