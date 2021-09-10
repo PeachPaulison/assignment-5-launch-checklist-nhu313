@@ -31,12 +31,12 @@ window.addEventListener('load', function() {
 
 	//    get the form
 	//    add a listener to when the form submits 
-	form.addEventListener('click', function(event) {
+	form.addEventListener('submit', function(event) {
 		event.preventDefault();
 		let pilot = document.querySelector('input[name=pilotName]');
 		let copilot = document.querySelector('input[name=copilotName]');
 		let fuelLevel = document.querySelector('input[name=fuelLevel]');
-		let cargoLevel = document.querySelector('input[name=cargoLevel]');
+		let cargoLevel = document.querySelector('input[name=cargoMass]');
 		//let pilotInput = document.querySelector("input[name=pilotName]");
 		const pilotValue = pilot.value;
 		const copilotValue = copilot.value;

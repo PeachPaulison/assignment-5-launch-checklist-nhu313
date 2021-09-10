@@ -41,6 +41,11 @@ function validateInput(testInput) {
 	}
 }
 
+// function isString(value) {
+// 	return typeof value === 'string' || value instanceof String;
+// }
+// Or just use typeOf?
+
 function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue) {
 	// check if any of the values are empty
 	// if (validateInput(pilotValue) === 'Empty' || validateInput(copilotValue) === 'Empty')
@@ -48,48 +53,63 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
 	// check if fuelLevelValue and cargoLevelValue are not numbers
 	// alert the user that must enter valid input
 	if (
-		validateInput(pilot) === 'Empty' ||
-		validateInput(copilot) === 'Empty' ||
-		validateInput(fuelLevel) === 'Empty' ||
-		validateInput(cargoLevel) === 'Empty'
+		validateInput(pilotValue) === 'Empty' ||
+		validateInput(copilotValue) === 'Empty' ||
+		validateInput(fuelLevelValue) === 'Empty' ||
+		validateInput(cargoLevelValue) === 'Empty'
 	) {
 		alert('Please complete all of the fields.');
 	}
-	if (validateInput(fuelLevel) === isNaN || validateInput(cargoLevel) === isNaN) {
+	if (
+		validateInput(fuelLevelValue) === "Not a Number" ||
+	 	validateInput(cargoLevelValue) === "Not a Number") {
 		alert('Please enter a valid number.');
 	}
 
+	if (
+		validateInput(pilotValue) === "Is a Number"  ||
+		validateInput(copilotValue) === "Is a Number"
+	 ) {
+		alert('Please enter valid name.')
+	 }
 	// set the list.style.visibility = 'visible'
 	// get the pilot status, update the inner HTML to say ` ${pilotValue} is ready for launch`
 	// get the copilot status, update the inner HTML to say `CoPilot ${copilotValue} is ready for launch`
 	list.style.visibility = 'visible';
-	document.getElementByID('pilotStatus').innerHTML = `Pilot ${pilot.value} is ready for launch!`;
-	document.getElementByID('copilotStatus').innerHTML = `Copilot ${copilot.value} is ready for launch!`;
+	document.getElementById('pilotStatus').innerHTML = `Pilot ${pilotValue} is ready for launch!`;
+	document.getElementById('copilotStatus').innerHTML = `Copilot ${copilotValue} is ready for launch!`;
 
 	// check if the fuel level is less 10,000
 	// change launchStatus to "Shuttle not ready for launch", and color to red
 	// change the fuelStatus to "Fuel level too low for launch"
 
-	if (fuelLevel < 10000) {
+	let validInputFlag = true;
+	if (fuelLevelValue < 10000) {
+		validInputFlag = false;
 		list.style.visibility = 'visible';
-		document.getElementByID('launchStatus').innerHTML = `Shuttle not ready for launch!`;
-		document.getElementByID('launchStatus').style.color = 'red';
-		document.getElementByID('fuelStatus').innerHTML = `Fuel level too low for launch!`;
+		document.getElementById('launchStatus').innerHTML = `Shuttle not ready for launch!`;
+		document.getElementById('launchStatus').style.color = 'red';
+		document.getElementById('fuelStatus').innerHTML = `Fuel level too low for launch!`;
 
 		// check if the cargo level is more than 10,000
 		// change launchStatus to "Shuttle not ready for launch", and color to red
 		// change the cargoStatus to "Cargo level too high for launch"
-	} else if (cargoLevel > 10000) {
+	}
+
+	if (cargoLevelValue > 10000) {
+		validInputFlag = false;
 		list.style.visibility = 'visible';
-		document.getElementByID('launchStatus').innerHTML = `Shuttle not ready for launch!`;
-		document.getElementByID('launchStatus').style.color = 'red';
-		document.getElementByID('cargoStatus').innerHTML = `Cargo level too high for launch!`;
+		document.getElementById('launchStatus').innerHTML = `Shuttle not ready for launch!`;
+		document.getElementById('launchStatus').style.color = 'red';
+		document.getElementById('cargoStatus').innerHTML = `Cargo level too high for launch!`;
 
 		// if both fuel and cargo are good
 		// change the launchStatus to "Shuttle is Ready for Launch" and color to green
-	} else {
-		document.getElementByID('launchStatus').innerHTML = `Shuttle is ready for launch!`;
-		document.getElementByID('launchStatus').style.color = 'green';
+	}
+
+	if (validInputFlag){
+		document.getElementById('launchStatus').innerHTML = `Shuttle is ready for launch!`;
+		document.getElementById('launchStatus').style.color = 'green';
 	}
 }
 
