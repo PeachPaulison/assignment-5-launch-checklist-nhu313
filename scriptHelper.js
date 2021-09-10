@@ -55,7 +55,7 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
 	) {
 		alert('Please complete all of the fields.');
 	}
-	if (validateInput(fuelLevel) === NaN || validateInput(cargoLevel) === NaN) {
+	if (validateInput(fuelLevel) === isNaN || validateInput(cargoLevel) === isNaN) {
 		alert('Please enter a valid number.');
 	}
 
