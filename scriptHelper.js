@@ -6,7 +6,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 
 	// set the inner HTML to this
-  let missionTarget  = document.getElementById("missionTarget");
+  let missionTarget = document.getElementById("missionTarget");
 
 	missionTarget.innerHTML =
 		// fill in the information that is passed in
@@ -108,7 +108,7 @@ async function myFetch() {
 
 function pickPlanet(planets) {
 	// randomly pick a planet from the array
-	// Math random for index
+	// Math random for index  
 	let index = Math.floor(Math.random() * planets.length);
 	return planets[index];
 }

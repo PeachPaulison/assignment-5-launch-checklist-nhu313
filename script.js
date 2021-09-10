@@ -37,7 +37,7 @@ window.addEventListener('load', function() {
 		let copilot = document.querySelector('input[name=copilotName]');
 		let fuelLevel = document.querySelector('input[name=fuelLevel]');
 		let cargoLevel = document.querySelector('input[name=cargoLevel]');
-		let pilotInput = document.querySelector("input[name=pilotName]");
+		//let pilotInput = document.querySelector("input[name=pilotName]");
 		const pilotValue = pilot.value;
 		const copilotValue = copilot.value;
 		const fuelLevelValue = fuelLevel.value;
