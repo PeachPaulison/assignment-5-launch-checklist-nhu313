@@ -94,7 +94,7 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
 }
 
 async function myFetch() {
-	let planetsReturned;
+	let planetsReturned = []
 
 	planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then(function(
 		response
